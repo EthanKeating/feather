@@ -1,9 +1,8 @@
-name: SlimeWorldManager
-version: ${project.version}
+name: feather
+version: 1.0
 main: com.grinderwolf.swm.plugin.SWMPlugin
-author: Grinderwolf
-description: Slime World Manager is a resource that implements the Slime Region Format, designed by the Hypixel Team to load and save worlds more efficiently.
-api-version: 1.13
+authors: [Grinderwolf, Eths]
+description: feather is a resource that implements the Slime Region Format
 commands:
   swm:
     description: Main SWM command.

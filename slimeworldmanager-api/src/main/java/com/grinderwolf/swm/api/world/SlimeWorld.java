@@ -7,13 +7,12 @@ import com.grinderwolf.swm.api.world.properties.SlimePropertyMap;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.experimental.Accessors;
-import lombok.experimental.Wither;
 
 import java.io.IOException;
 import java.util.Collection;
 
 /**
- * In-memory representation of a SRF world.
+ * In-memory representation of an SRF world.
  */
 public interface SlimeWorld {
 
@@ -61,7 +60,7 @@ public interface SlimeWorld {
 
     /**
      * Returns the properties of the world. These properties are automatically
-     * kept up-to-date when the world is loaded and its properties are updated.
+     * kept up to date when the world is loaded and its properties are updated.
      *
      * @return A {@link SlimeProperties} object with all the current properties of the world.
      * @deprecated see {@link #getPropertyMap()}.
@@ -77,7 +76,7 @@ public interface SlimeWorld {
     SlimePropertyMap getPropertyMap();
 
     /**
-     * Returns whether or not read-only is enabled.
+     * Returns whether read-only is enabled.
      *
      * @return true if read-only is enabled, false otherwise.
      */
@@ -116,7 +115,7 @@ public interface SlimeWorld {
      *
      * @param worldName The name of the cloned world.
      * @param loader The {@link SlimeLoader} used to store the world or <code>null</code> if the world is temporary.
-     * @param lock whether or not SWM should lock the world. If false, SWM will not let you load this world for security reasons.
+     * @param lock whether SWM should lock the world. If false, SWM will not let you load this world for security reasons.
      *
      * @return The clone of the world.
      *
@@ -127,7 +126,7 @@ public interface SlimeWorld {
     SlimeWorld clone(String worldName, SlimeLoader loader, boolean lock) throws WorldAlreadyExistsException, IOException;
 
     /**
-     * Returns whether or not this world is locked and, therefore, can be loaded on the server by
+     * Returns whether this world is locked and, therefore, can be loaded on the server by
      * using the {@link com.grinderwolf.swm.api.SlimePlugin#generateWorld(SlimeWorld)} method.
      *
      * @return true if the world is locked, false otherwise
@@ -135,13 +134,12 @@ public interface SlimeWorld {
     boolean isLocked();
 
     /**
-     * All the currently-available properties of the world.
+     * All the currently available properties of the world.
      *
      * @deprecated see {@link SlimePropertyMap}
      */
     @Getter
     @Builder(toBuilder = true)
-    @Deprecated
     class SlimeProperties {
 
         private double spawnX;
@@ -158,7 +156,6 @@ public interface SlimeWorld {
         @Builder.Default
         private boolean allowAnimals = true;
 
-        @Wither
         private boolean readOnly;
 
         @Builder.Default

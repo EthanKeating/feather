@@ -1,1 +1,2 @@
-enable_async_world_gen: false
+enable_async_world_gen: true
+enable_commands: false
