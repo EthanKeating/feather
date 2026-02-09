@@ -47,10 +47,10 @@ public class NMSSlimeChunk implements SlimeChunk {
 
                 if (!section.a()) { // If the section is empty, just ignore it to save space
                     // Block Light Nibble Array
-                    NibbleArray blockLightArray = Converter.convertArray(section.getEmittedLightArray());
+                    NibbleArray blockLightArray = section.getEmittedLightArray() != null ? Converter.convertArray(section.getEmittedLightArray()) : null;
 
                     // Sky light Nibble Array
-                    NibbleArray skyLightArray = Converter.convertArray(section.getSkyLightArray());
+                    NibbleArray skyLightArray = section.getSkyLightArray() != null ? Converter.convertArray(section.getSkyLightArray()) : null;
 
                     // Block Data
                     byte[] blocks = new byte[4096];

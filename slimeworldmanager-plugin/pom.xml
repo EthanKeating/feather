@@ -44,7 +44,8 @@
         <dependency>
             <groupId>com.github.luben</groupId>
             <artifactId>zstd-jni</artifactId>
-            <version>1.4.1-1</version>
+            <version>1.5.7-4</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.zaxxer</groupId>
@@ -78,7 +79,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>3.6.0</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -122,10 +123,6 @@
                         <relocation>
                             <pattern>org.bson</pattern>
                             <shadedPattern>com.grinderwolf.swm.internal.org.bson</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>com.github.luben.zstd</pattern>
-                            <shadedPattern>com.grinderwolf.swm.internal.zstd</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>

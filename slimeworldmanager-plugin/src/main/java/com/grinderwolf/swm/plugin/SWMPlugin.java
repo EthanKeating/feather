@@ -29,8 +29,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.*;
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class SWMPlugin extends JavaPlugin implements SlimePlugin {
 
@@ -310,6 +315,36 @@ public class SWMPlugin extends JavaPlugin implements SlimePlugin {
         } else {
             nms.generateWorld(world);
         }
+    }
+    private static Lock TEST_LOCK = new ReentrantLock();
+    @Override
+    public CompletableFuture<Void> generateWorldAsync(SlimeWorld world) {
+        CompletableFuture<Void> cf = new CompletableFuture<>();
+
+        Objects.requireNonNull(world, "SlimeWorld cannot be null");
+
+        if (!world.isReadOnly() && !world.isLocked()) {
+            throw new IllegalArgumentException("This world cannot be loaded, as it has not been locked.");
+        }
+
+        if (!asyncWorldGen) {
+            throw new RuntimeException("The async world generator is not enabled");
+        }
+
+        worldGeneratorService.submit(() -> {
+
+            Object nmsWorld = nms.createNMSWorld(world);
+            CompletableFuture<Void> done = new CompletableFuture<>();
+            Bukkit.getScheduler().runTask(this, () -> {
+                int id = nms.addWorldToServerList(nmsWorld);
+                ADDING_WORLDS.removeIf(integer -> integer == id);
+                cf.complete(null);
+                done.complete(null);
+            });
+
+        });
+
+        return cf;
     }
 
     @Override

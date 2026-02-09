@@ -24,6 +24,10 @@
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
+        <repository>
+            <id>elmakers-repo</id>
+            <url>https://maven.elmakers.com/repository/</url>
+        </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
