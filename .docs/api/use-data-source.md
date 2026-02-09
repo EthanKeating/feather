@@ -4,7 +4,7 @@ SlimeLoaders are classes used to load worlds from specific data sources. Remembe
 
 Once you've got your own SlimeLoader, remember to register it so you can use it later:
 ```java
-SlimePlugin plugin = (SlimePlugin) Bukkit.getPluginManager().getPlugin("SlimeWorldManager");
+SlimePlugin plugin = (SlimePlugin) Bukkit.getPluginManager().getPlugin("feather");
 
 plugin.registerLoader("my_data_source", new MyCustomSlimeLoader());
 ```

@@ -21,10 +21,10 @@ public class DatasourcesConfig {
         @Setting("host") private String host = "127.0.0.1";
         @Setting("port") private int port = 3306;
 
-        @Setting("username") private String username = "slimeworldmanager";
+        @Setting("username") private String username = "feather";
         @Setting("password") private String password = "";
 
-        @Setting("database") private String database = "slimeworldmanager";
+        @Setting("database") private String database = "feather";
     }
 
     @Getter
@@ -37,10 +37,10 @@ public class DatasourcesConfig {
         @Setting("port") private int port = 27017;
 
         @Setting("auth") private String authSource = "admin";
-        @Setting("username") private String username = "slimeworldmanager";
+        @Setting("username") private String username = "feather";
         @Setting("password") private String password = "";
 
-        @Setting("database") private String database = "slimeworldmanager";
+        @Setting("database") private String database = "feather";
         @Setting("collection") private String collection = "worlds";
 
         @Setting("uri") private String uri = "";
