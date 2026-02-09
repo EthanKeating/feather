@@ -3,7 +3,3 @@ version: 1.0
 main: com.grinderwolf.swm.plugin.SWMPlugin
 authors: [Grinderwolf, Eths]
 description: feather is a resource that implements the Slime Region Format
-commands:
-  swm:
-    description: Main SWM command.
-    usage: /swm <cmd>
