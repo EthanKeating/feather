@@ -1,6 +1,7 @@
 package com.grinderwolf.swm.plugin.commands;
 
 import com.grinderwolf.swm.plugin.commands.sub.*;
+import com.grinderwolf.swm.plugin.config.ConfigManager;
 import com.grinderwolf.swm.plugin.log.Logging;
 import lombok.Getter;
 import org.bukkit.ChatColor;
@@ -22,20 +23,22 @@ public class CommandManager implements TabExecutor {
     public CommandManager() {
         instance = this;
 
-        commands.put("help", new HelpCmd());
-        commands.put("version", new VersionCmd());
-        commands.put("goto", new GotoCmd());
-        commands.put("load", new LoadWorldCmd());
-        commands.put("load-template", new LoadTemplateWorldCmd());
-        commands.put("clone-world", new CloneWorldCmd());
-        commands.put("unload", new UnloadWorldCmd());
-        commands.put("list", new WorldListCmd());
-        commands.put("dslist", new DSListCmd());
-        commands.put("migrate", new MigrateWorldCmd());
-        commands.put("delete", new DeleteWorldCmd());
-        commands.put("import", new ImportWorldCmd());
-        commands.put("reload", new ReloadConfigCmd());
-        commands.put("create", new CreateWorldCmd());
+        if (ConfigManager.getMainConfig().isEnableCommands()) {
+            commands.put("help", new HelpCmd());
+            commands.put("version", new VersionCmd());
+            commands.put("goto", new GotoCmd());
+            commands.put("load", new LoadWorldCmd());
+            commands.put("load-template", new LoadTemplateWorldCmd());
+            commands.put("clone-world", new CloneWorldCmd());
+            commands.put("unload", new UnloadWorldCmd());
+            commands.put("list", new WorldListCmd());
+            commands.put("dslist", new DSListCmd());
+            commands.put("migrate", new MigrateWorldCmd());
+            commands.put("delete", new DeleteWorldCmd());
+            commands.put("import", new ImportWorldCmd());
+            commands.put("reload", new ReloadConfigCmd());
+            commands.put("create", new CreateWorldCmd());
+        }
     }
 
     @Override

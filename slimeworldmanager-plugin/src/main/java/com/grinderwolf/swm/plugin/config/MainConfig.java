@@ -18,7 +18,7 @@ public class MainConfig {
     private boolean asyncWorldGenerate = true;
 
     @Setting(value = "enable_commands")
-    private boolean enableCommands = true;
+    private boolean enableCommands = false;
 
     @Setting("updater")
     private UpdaterOptions updaterOptions = new UpdaterOptions();
