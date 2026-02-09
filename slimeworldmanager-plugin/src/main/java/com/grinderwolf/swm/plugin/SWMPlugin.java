@@ -105,13 +105,16 @@ public class SWMPlugin extends JavaPlugin implements SlimePlugin {
         new Metrics(this);
 
         final CommandManager commandManager = new CommandManager();
-        final PluginCommand swmCommand = getCommand("swm");
-        swmCommand.setExecutor(commandManager);
 
-        try {
-            swmCommand.setTabCompleter(commandManager);
-        } catch (Throwable throwable) {
-            // For some versions that does not have TabComplete?
+        if (ConfigManager.getMainConfig().isEnableCommands()) {
+            final PluginCommand swmCommand = getCommand("swm");
+            swmCommand.setExecutor(commandManager);
+
+            try {
+                swmCommand.setTabCompleter(commandManager);
+            } catch (Throwable throwable) {
+                // For some versions that does not have TabComplete?
+            }
         }
 
         getServer().getPluginManager().registerEvents(new WorldUnlocker(), this);
