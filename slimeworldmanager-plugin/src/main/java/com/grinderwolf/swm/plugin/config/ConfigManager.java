@@ -65,7 +65,7 @@ public class ConfigManager {
         }
 
         if (!SOURCES_FILE.exists()) {
-            Files.copy(SWMPlugin.getInstance().getResource("worlds.yml"), SOURCES_FILE.toPath());
+            Files.copy(SWMPlugin.getInstance().getResource("sources.yml"), SOURCES_FILE.toPath());
         }
     }
 }

@@ -178,6 +178,10 @@ public class LoaderUtils {
                 chunkDataStream = new DataInputStream(new SegmentedDecompressedInputStream(dataStream, segmentCount));
             }
 
+            // Segmented chunk data streams from the main data stream.
+            // Consume all chunk bytes before reading the secondary blobs.
+            Map<Long, SlimeChunk> chunks = readChunks(worldVersion, version, worldName, minX, minZ, width, depth, chunkBitset, chunkDataStream);
+
             // ---- Tile Entities ----
             int compressedTileEntitiesLength = dataStream.readInt();
             int tileEntitiesLength = dataStream.readInt();
@@ -257,9 +261,6 @@ public class LoaderUtils {
             if (mapsTag.length > 0 && compressedMapsTag.length > 0) {
                 Zstd.decompress(mapsTag, compressedMapsTag);
             }
-
-            // Chunk deserialization (stream-based)
-            Map<Long, SlimeChunk> chunks = readChunks(worldVersion, version, worldName, minX, minZ, width, depth, chunkBitset, chunkDataStream);
 
             // Entities -> assign to chunk
             CompoundTag entitiesCompound = readCompoundTag(entities);
