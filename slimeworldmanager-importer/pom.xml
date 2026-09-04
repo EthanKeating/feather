@@ -11,12 +11,12 @@
     <dependencies>
         <dependency>
             <groupId>com.grinderwolf</groupId>
-            <artifactId>slimeworldmanager-api</artifactId>
+            <artifactId>feather-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.grinderwolf</groupId>
-            <artifactId>slimeworldmanager-nms-common</artifactId>
+            <artifactId>feather-nms-common</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
